@@ -1,0 +1,46 @@
+---
+
+---
+
+import { FileTree } from 'nextra/components'
+
+# Development Setup
+
+## Required Tooling
+
+- [NodeJS](https://nodejs.org/en/download)
+- [VSCode](https://code.visualstudio.com/download)
+- [Docker Desktop/Environment](https://www.docker.com/products/docker-desktop/)
+- [pnpm](https://pnpm.io/installation)
+
+## Project Structure
+
+<FileTree>
+    <FileTree.Folder name="whendarr" defaultOpen>
+        <FileTree.Folder name="apps" defaultOpen>
+            <FileTree.Folder name="@whendarr/backend" defaultOpen>
+                <FileTree.File name="package.json" />
+            </FileTree.Folder>
+            <FileTree.Folder name="@whendarr/frontend" defaultOpen>
+                <FileTree.File name="package.json" />
+            </FileTree.Folder>
+        </FileTree.Folder>
+        <FileTree.Folder name="docker" defaultOpen>
+            <FileTree.File name="Dockerfile" />
+        </FileTree.Folder>
+        <FileTree.Folder name="packages" defaultOpen>
+            <FileTree.Folder name="@whendarr/eslint" defaultOpen>
+            <FileTree.File name="package.json" />
+        </FileTree.Folder>
+            <FileTree.Folder name="@whendarr/shared" defaultOpen>
+            <FileTree.File name="package.json" />
+        </FileTree.Folder>
+            <FileTree.Folder name="@whendarr/translations" defaultOpen>
+            <FileTree.File name="package.json" />
+        </FileTree.Folder>
+            <FileTree.Folder name="@whendarr/tsconfig" defaultOpen>
+            <FileTree.File name="package.json" />
+        </FileTree.Folder>
+        </FileTree.Folder>
+    </FileTree.Folder>
+</FileTree>

@@ -1,0 +1,62 @@
+---
+title: Reverse Proxy
+---
+
+import { Tabs } from 'nextra/components'
+
+# Configuring a Reverse Proxy
+
+```mermaid
+graph LR;
+A[Reverse Proxy];
+B[Whendarr];
+C[Sonarr];
+D[Radarr];
+A --> B;
+B --> C;
+B --> D;
+```
+
+## Traefik
+
+<Tabs items={['Sub-Domain', 'Path']}>
+    <Tabs.Tab>
+        ```yml
+        services:
+            whendarr:
+                ...
+                labels:
+                    traefik.enable: true
+                    traefik.http.routers.whendarr-rtr.rule: Host(`whendarr.domain.tld`)
+                    traefik.http.routers.service: whendarr-svc
+                    traefik.http.services.whendarr-svc.loadbalancer.server.port: 3000
+        ```
+    </Tabs.Tab>
+    <Tabs.Tab>
+        ```yml
+        services:
+            whendarr:
+                ...
+                labels:
+                    traefik.enable: true
+                    traefik.http.routers.whendarr-rtr.rule: Host(`domain.tld`) && && PathPrefix(`/whendarr`)
+                    traefik.http.routers.service: whendarr-svc
+                    traefik.http.services.whendarr-svc.loadbalancer.server.port: 3000
+        ```
+    </Tabs.Tab>
+</Tabs>
+
+## Nginx
+
+<Tabs items={['Sub-Domain', 'Path']}>
+    <Tabs.Tab>
+        ```conf
+        WIP
+        ```
+    </Tabs.Tab>
+    <Tabs.Tab>
+        ```conf
+        WIP
+        ```
+    </Tabs.Tab>
+</Tabs>

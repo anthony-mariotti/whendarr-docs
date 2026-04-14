@@ -6,6 +6,7 @@ import { GlobeIcon } from 'lucide-react';
 import { SiDiscord, SiGithub } from 'react-icons/si';
 import { Analytics } from '@vercel/analytics/next';
 import type { Metadata } from 'next';
+import type { FC } from 'react';
 
 const TITLE = "Whendarr Documentation";
 const DESCRIPTION = "Documentation for Whendarr - A lightweight web calendar for *arrs aggregating tv and movie releases into a fast, shareable monthly view.";
@@ -58,7 +59,7 @@ export const metadata: Metadata = {
 
 const banner = (
     <Banner dismissible={false}>
-        Documentation is Work in Progress. Whendarr is still Privated
+        Documentation is Work in Progress
     </Banner>
 );
 const navbar = (
@@ -69,6 +70,8 @@ const navbar = (
                 <span className="text-lg font-bold">Whendarr</span>
             </div>
         }
+        projectLink='https://github.com/anthony-mariotti/whendarr'
+        chatLink='https://discord.gg/0000000000'
     // ... Your additional navbar options
     />
 );
@@ -117,16 +120,10 @@ const footer = (
     </Footer>
 );
 
-export default async function RootLayout({ children }: { children: React.ReactNode }) {
+const RootLayout: FC<LayoutProps<'/'>> = async ({ children }) => {
+    const pageMap = await getPageMap();
     return (
-        <html
-            // Not required, but good for SEO
-            lang="en"
-            // Required to be set
-            dir="ltr"
-            // Suggested by `next-themes` package https://github.com/pacocoursey/next-themes#with-app
-            suppressHydrationWarning
-        >
+        <html lang="en" dir="ltr" suppressHydrationWarning>
             <Head
                 color={{
                     hue: 292,
@@ -137,19 +134,19 @@ export default async function RootLayout({ children }: { children: React.ReactNo
                     }
                 }}
                 backgroundColor={{
-                    dark: '#222222',
+                    dark: '#121212',
                     light: '#F2F2F2'
                 }}
-            >
-                {/* Your additional tags should be passed as `children` of `<Head>` element */}
-            </Head>
+            />
+
             <body>
                 <Layout
                     banner={banner}
                     navbar={navbar}
-                    pageMap={await getPageMap()}
+                    pageMap={pageMap}
                     docsRepositoryBase="https://github.com/anthony-mariotti/whendarr-docs/tree/main"
                     footer={footer}
+                    editLink='Edit this page on GitHub'
                 // ... Your additional layout options
                 >
                     {children}
@@ -157,5 +154,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
                 <Analytics />
             </body>
         </html>
-    );
+    )
 }
+
+export default RootLayout;

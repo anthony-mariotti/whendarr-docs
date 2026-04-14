@@ -1,12 +1,14 @@
 ---
-title: Whendarr Documentation
-description: Testing
+description:
+    Whendarr is an open source, self hosted calendar that aggregates release data
+    from *arr services into a simple monthly interface.
 ---
 
-import { WorkInProgress } from '@/components/WorkInProgress.js';
-import { Callout } from 'nextra/components';
+import { WorkInProgress } from '@/components/callouts.js';
+import { Callout, ImageZoom } from 'nextra/components';
+import { Image } from 'next/image.js';
 
-# Whendarr
+# About The Project
 
 <WorkInProgress />
 
@@ -15,3 +17,57 @@ import { Callout } from 'nextra/components';
     Whendarr is currently still privated.<br/>
     When docker builds become stable, the repository will become open source.
 </Callout>
+
+Whendarr is an open source, self hosted calendar that aggregates release data from *arr services into a simple monthly interface.
+Whendarr aims to remove the need to expose tools like Sonarr and Radarr to end users. Instead, providing a fast, shareable, readonly view of upcoming show and movie releases.
+Aggregation also includes availability statuses and metadata, so that your media stack can stay private, but users can stay informed, and possibly find new content to explore.
+
+<ImageZoom
+    src="/images/whendarr-fullscreen.png"
+    alt="Placeholder for Whendarr screenshot demo"
+    width={1280}
+    height={1080}
+    className="rounded-lg my-6 shadow-md"
+/>
+
+## Key Features
+
+### Media Integration
+
+- Integration with Sonarr and Radarr
+- Aggregated Show and Movie release in a unified calendar view
+- Automatic grouping of episodes by show for cleaner navigation
+
+### Calendar Experience
+
+- Clear visibility into upcoming releases
+- Download/availability status indicators for media
+- Dark and Light theme support
+- Mimimal UI focused on usability
+
+### Privacy & Security
+
+- Keep your *arr stack private, no need to expose Sonarr or Radarr
+- Read-only, shareable interface
+
+### Performance & Infrastructure
+
+- Environment variable configuration support (including `_FILE` for secrets)
+- Redis/Valkey caching to improve load time and reduce load on *arr stack
+- Designed for easy reverse proxy and subpath setups
+
+## Planned Features
+
+- Filtering and personalized views
+- Planned timezone for accurate scheduling
+- Planned internationalization
+
+## Built With
+
+- [React](https://react.dev/)
+- [Fastify](https://fastify.dev/)
+- [Docker](https://www.docker.com/)
+
+## Contribute
+
+Want to help improve Whendarr? [Learn more](/contribute)
