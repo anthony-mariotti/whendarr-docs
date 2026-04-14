@@ -1,6 +1,8 @@
 @import "tailwindcss";
 @import "nextra-theme-docs/style.css";
 
+@variant dark (&:where(.dark *));
+
 html {
   color-scheme: dark;
 }

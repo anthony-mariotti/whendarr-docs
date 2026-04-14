@@ -9,8 +9,9 @@
     ],
     "paths": {
       "@/*": [
-        "./"
-      ]
+        "./*"
+      ],
+      "@/components/*": ["./components/*"]
     },
     "target": "es2024",
     "lib": [
