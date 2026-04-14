@@ -1,0 +1,38 @@
+{
+  "name": "@whendarr/docs",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "next --port 4000",
+    "build": "next build",
+    "start": "next start",
+    "format": "preitter --write .",
+    "clean": "rm -rf node_modules dist .next"
+  },
+  "dependencies": {
+    "lucide-react": "1.8.0",
+    "next": "16.2.3",
+    "nextra": "4.6.1",
+    "nextra-theme-docs": "4.6.1",
+    "react": "19.2.5",
+    "react-dom": "19.2.5",
+    "react-icons": "5.6.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.2.2",
+    "@types/node": "^25.6.0",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "eslint": "^9.39.4",
+    "eslint-config-next": "^16.2.3",
+    "prettier": "^3.8.2",
+    "prettier-plugin-tailwindcss": "^0.7.2",
+    "tailwindcss": "^4.2.2"
+  },
+  "packageManager": "pnpm@10.33.0+sha512.10568bb4a6afb58c9eb3630da90cc9516417abebd3fabbe6739f0ae795728da1491e9db5a544c76ad8eb7570f5c4bb3d6c637b2cb41bfdcdb47fa823c8649319",
+  "engines": {
+    "node": ">=18",
+    "pnpm": ">=10.0.0"
+  }
+}

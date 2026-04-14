@@ -1,0 +1,18 @@
+---
+name: Docker Compose
+---
+
+# Docker Compose
+
+```yml
+services:
+  whendarr:
+    image: ghcr.io/anthony-mariotti/whendarr:latest
+    environment:
+      RADARR_URL: <radarr_instance>
+      RADARR_KEY: <radarr_apikey>
+      SONARR_URL: <sonarr_instance>
+      SONARR_KEY: <sonarr_apikey>
+    ports:
+      - 3000:3000
+```

@@ -1,1 +1,1 @@
-# whendarr-docs
+# Whendarr Documentation

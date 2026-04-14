@@ -1,0 +1,35 @@
+---
+name: Environment
+---
+
+# Environment
+
+Whendarr uses environment variables for complete configuration.
+
+## Required Environment Variables
+
+| Variable | Description | Example |
+| -------- | ----------- | ------- |
+| `RADARR_URL` | Radarr Instance URL | `http://radarr.domain.tld` |
+| `RADARR_KEY` | Radarr API Key | `867530900000000000` |
+| `SONARR_URL` | Sonarr Instance URL | `http://sonarr.domain.tld` |
+| `SONARR_KEY` | Sonarr API Key | `867530900000000000` |
+
+## Optional Environment Variables
+
+### Web Server / Hosting
+
+
+
+### Redis/Valkey Caching
+
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `REDIS_URL`* | Redis connection string | Not Set |
+| `REDIS_HOST` | Redis instance host/ip | Not Set |
+| `REDIS_PORT` | Redis instance port | `6379` |
+| `REDIS_PASSWORD` | Redis instance password | Not Set |
+| `REDIS_PREFIX` | Redis key prefix for namespacing | Not Set |
+
+\* `REDIS_URL` takes priority over `REDIS_HOST`, `REDIS_PORT`, and `REDIS_PASSWORD`
+
