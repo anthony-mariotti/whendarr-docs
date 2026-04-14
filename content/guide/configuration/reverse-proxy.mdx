@@ -2,19 +2,27 @@
 title: Reverse Proxy
 ---
 
-import { Tabs } from 'nextra/components'
+import { WorkInProgress } from '@/components/callouts.js';
+import { Tabs } from 'nextra/components';
 
 # Configuring a Reverse Proxy
 
+<WorkInProgress />
+
+The goal of using a reverse proxy is typically to allow for the generation of TLS/SSL certificates for your hosted services.
+Whendarr fully supports `Traefik`, `Nginx`, `HAProxy` and more.
+
 ```mermaid
 graph LR;
-A[Reverse Proxy];
-B[Whendarr];
+USR@{ shape: circle, label: "Users"}
+RP[Reverse Proxy];
+WD[Whendarr];
 C[Sonarr];
 D[Radarr];
-A --> B;
-B --> C;
-B --> D;
+USR <--> RP;
+RP <--> WD;
+WD --> C;
+WD --> D;
 ```
 
 ## Traefik
