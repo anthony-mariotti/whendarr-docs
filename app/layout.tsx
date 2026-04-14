@@ -4,6 +4,7 @@ import { getPageMap } from 'nextra/page-map';
 import './global.css';
 import { GlobeIcon } from 'lucide-react';
 import { SiDiscord, SiGithub } from 'react-icons/si';
+import { Analytics } from '@vercel/analytics/next';
 
 export const metadata = {
   // Define your metadata here
@@ -104,6 +105,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         >
           {children}
         </Layout>
+        <Analytics />
       </body>
     </html>
   );
