@@ -36,7 +36,7 @@ WD --> D;
                 labels:
                     traefik.enable: true
                     traefik.http.routers.whendarr-rtr.rule: Host(`whendarr.domain.tld`)
-                    traefik.http.routers.service: whendarr-svc
+                    traefik.http.routers.whendarr-rtr.service: whendarr-svc
                     traefik.http.services.whendarr-svc.loadbalancer.server.port: 3000
         ```
     </Tabs.Tab>
@@ -45,10 +45,13 @@ WD --> D;
         services:
             whendarr:
                 ...
+                environment:
+                    ...
+                    BASE_PATH: /whendarr
                 labels:
                     traefik.enable: true
                     traefik.http.routers.whendarr-rtr.rule: Host(`domain.tld`) && && PathPrefix(`/whendarr`)
-                    traefik.http.routers.service: whendarr-svc
+                    traefik.http.routers.whendarr-rtr.service: whendarr-svc
                     traefik.http.services.whendarr-svc.loadbalancer.server.port: 3000
         ```
     </Tabs.Tab>
