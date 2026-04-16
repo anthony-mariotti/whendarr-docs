@@ -13,7 +13,7 @@ Whendarr uses environment variables for complete configuration.
 ## Required Environment Variables
 
 | Variable | Description | Example |
-| -------- | ----------- | ------- |
+|:---------|:------------|:--------|
 | `RADARR_URL` | Radarr Instance URL | `http://radarr.domain.tld` |
 | `RADARR_KEY` | Radarr API Key | `867530900000000000` |
 | `SONARR_URL` | Sonarr Instance URL | `http://sonarr.domain.tld` |
@@ -23,12 +23,19 @@ Whendarr uses environment variables for complete configuration.
 
 ### Web Server / Hosting
 
-
+| Variable | Description | Default |
+|:---------|:------------|:--------|
+| `BASE_PATH` | Use a path to host under | `/` |
+| `HOST` | Bind to a specific host interface | `0.0.0.0` |
+| `PORT` | Bind to a specific port | `3000` |
+| `LOG_LEVEL` | `fatal` \| `error` \| `warn` \| `info` \| `debug` \| `trace` | `info` |
+| `TRUSTED_PROXY` | Trust a specific proxy `IP` address | Not Set |
+| `TRUSTED_PROXY_HOP` | Trust a specific number of reverse proxies | Not Set |
 
 ### Redis/Valkey Caching
 
 | Variable | Description | Default |
-|----------|-------------|---------|
+|:---------|:------------|:--------|
 | `REDIS_URL`* | Redis connection string | Not Set |
 | `REDIS_HOST` | Redis instance host/ip | Not Set |
 | `REDIS_PORT` | Redis instance port | `6379` |
