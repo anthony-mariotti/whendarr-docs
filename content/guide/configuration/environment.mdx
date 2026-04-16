@@ -36,11 +36,17 @@ Whendarr uses environment variables for complete configuration.
 
 | Variable | Description | Default |
 |:---------|:------------|:--------|
-| `REDIS_URL`* | Redis connection string | Not Set |
+| `REDIS_URL`\*<br/>`REDIS_URL_FILE`\* | Redis connection string | Not Set |
 | `REDIS_HOST` | Redis instance host/ip | Not Set |
 | `REDIS_PORT` | Redis instance port | `6379` |
-| `REDIS_PASSWORD` | Redis instance password | Not Set |
-| `REDIS_PREFIX` | Redis key prefix for namespacing | Not Set |
+| `REDIS_USERNAME`<br/>`REDIS_USERNAME_FILE` | Redis instance username | Not Set |
+| `REDIS_PASSWORD`<br/>`REDIS_PASSWORD_FILE` | Redis instance password | Not Set |
+| `REDIS_PREFIX` | Redis key prefix for namespacing | `whendarr` |
+| `REDIS_TLS` | Enable the use of TLS | `false` |
+| `REDIS_TLS_CA`<br/>`REDIS_TLS_CA_FILE` | TLS trusted CA certificate | Not Set |
+| `REDIS_TLS_CERT`<br/>`REDIS_TLS_CERT_FILE` | TLS certificate file | Not Set |
+| `REDIS_TLS_KEY`<br/>`REDIS_TLS_KEY_FILE` | TLS certificate key | Not Set |
+| `REDIS_TLS_REJECT_UNAUTHORIZED` | Redis key prefix for namespacing | `true` |
 
-\* `REDIS_URL` takes priority over `REDIS_HOST`, `REDIS_PORT`, and `REDIS_PASSWORD`
+\* `REDIS_URL` takes priority over `REDIS_HOST`, `REDIS_PORT`, `REDIS_USERNAME`, and `REDIS_PASSWORD`
 
