@@ -35,9 +35,8 @@ export const metadata: Metadata = {
     creator: "Whendarr",
     publisher: "Whendarr",
     robots: {
-        // TODO: CHANGE ON RELEASE
-        index: false,
-        follow: false
+        index: true,
+        follow: true
     },
     // manifest: "/site.webmanifest",
     openGraph: {
