@@ -3,7 +3,7 @@
 ---
 
 import { WorkInProgress } from '@/components/callouts.js';
-import { FileTree } from 'nextra/components'
+import { FileTree, ImageZoom, Callout } from 'nextra/components'
 
 # Development Setup
 
@@ -14,17 +14,17 @@ import { FileTree } from 'nextra/components'
 - [NodeJS](https://nodejs.org/en/download)
 - [VSCode](https://code.visualstudio.com/download)
 - [Docker Environment](https://www.docker.com/products/docker-desktop/)
-- [pnpm](https://pnpm.io/installation)
+- [pnpm](https://pnpm.io/installation) v10.33.0
 
 ## Project Structure
 
 <FileTree>
     <FileTree.Folder name="whendarr" defaultOpen>
         <FileTree.Folder name="apps" defaultOpen>
-            <FileTree.Folder name="@whendarr/backend" defaultOpen>
+            <FileTree.Folder name="@whendarr/backend">
                 <FileTree.File name="package.json" />
             </FileTree.Folder>
-            <FileTree.Folder name="@whendarr/frontend" defaultOpen>
+            <FileTree.Folder name="@whendarr/frontend">
                 <FileTree.File name="package.json" />
             </FileTree.Folder>
         </FileTree.Folder>
@@ -32,18 +32,92 @@ import { FileTree } from 'nextra/components'
             <FileTree.File name="Dockerfile" />
         </FileTree.Folder>
         <FileTree.Folder name="packages" defaultOpen>
-            <FileTree.Folder name="@whendarr/eslint" defaultOpen>
+            <FileTree.Folder name="@whendarr/eslint">
             <FileTree.File name="package.json" />
         </FileTree.Folder>
-            <FileTree.Folder name="@whendarr/shared" defaultOpen>
+            <FileTree.Folder name="@whendarr/shared">
             <FileTree.File name="package.json" />
         </FileTree.Folder>
-            <FileTree.Folder name="@whendarr/translations" defaultOpen>
+            <FileTree.Folder name="@whendarr/translations">
             <FileTree.File name="package.json" />
         </FileTree.Folder>
-            <FileTree.Folder name="@whendarr/tsconfig" defaultOpen>
+            <FileTree.Folder name="@whendarr/tsconfig">
             <FileTree.File name="package.json" />
         </FileTree.Folder>
         </FileTree.Folder>
+        <FileTree.File name="package.json" />
+        <FileTree.File name="whendarr.code-workspace" />
     </FileTree.Folder>
 </FileTree>
+
+## Checkout Repository
+
+```bash
+# HTTP
+git clone https://github.com/anthony-mariotti/whendarr.git
+
+# SSH (Recommended)
+git clone git@github.com:anthony-mariotti/whendarr.git
+```
+
+## Using VSCode Workspace
+
+It's recommend to use the provided
+[VSCode workspace](https://code.visualstudio.com/docs/editing/workspaces/workspaces)
+when developing Whendarr. We use Multi-root workspaces that allows you to configure
+multiple distinct folders to be part of the same workspace. Instead of opening a folder
+as workspace, you open `whendarr.code-workspace` JSON file that lists all folders of the workspace.
+
+<ImageZoom src="/images/whendarr-code-workspace.png" className="w-64 mt-6" alt="Whendarr Code Workspace Overview" />
+
+## Install Project Dependencies
+
+```bash
+cd /path/to/whendarr
+
+pnpm install
+```
+
+## Running Locally
+
+Development uses [Valkey](https://valkey.io/) instead of [Redis](https://redis.io/) to ensure compatability. Since Whendarr
+relies on [ioredis](https://ioredis.com/), we want to catch any differences early.
+
+```bash
+# Spin up local valkey container
+pnpm docker:valkey:up
+```
+
+Setup environment variables by copying the `.env.example`
+
+```bash
+cp .env.example .env
+```
+
+Key environment variables
+
+- SONARR_URL
+- SONARR_KEY
+- RADARR_URL
+- RADARR_KEY
+
+> NOTE: Working on getting dynamic sample data so sonarr/radarr instances are not required to run durning development. At this time,
+> a working sonarr and radarr instance is **required**.
+
+## Running Test Suite
+
+<Callout type={'info'}>WIP</Callout>
+
+## Command Index
+
+<Callout type={'info'}>WIP</Callout>
+
+## Remote Cache (Optional)
+
+```bash
+cd /path/to/project
+
+pnpm exec turbo login
+pnpm exec turbo link
+```
+Read more on [Remote Caching](https://turborepo.dev/docs/core-concepts/remote-caching) by [Vercel](https://vercel.com)
