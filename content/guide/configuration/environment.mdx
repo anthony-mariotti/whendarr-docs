@@ -14,9 +14,9 @@ Whendarr uses environment variables for complete configuration.
 
 | Variable | Description | Example |
 |:---------|:------------|:--------|
-| `RADARR_URL` | Radarr Instance URL | `http://radarr.domain.tld` |
+| `RADARR_URL` | Radarr Instance URL | `http(s)://radarr.domain.tld` |
 | `RADARR_KEY`<br/>`RADARR_KEY_FILE` | Radarr API Key | `867530900000000000` |
-| `SONARR_URL` | Sonarr Instance URL | `http://sonarr.domain.tld` |
+| `SONARR_URL` | Sonarr Instance URL | `http(s)://sonarr.domain.tld` |
 | `SONARR_KEY`<br/>`SONARR_KEY_FILE` | Sonarr API Key | `867530900000000000` |
 
 ## Optional Environment Variables
@@ -36,7 +36,7 @@ Whendarr uses environment variables for complete configuration.
 
 | Variable | Description | Default |
 |:---------|:------------|:--------|
-| `REDIS_URL`\*<br/>`REDIS_URL_FILE`\* | Redis connection string | Not Set |
+| `REDIS_URL` <sup>\*</sup><br/>`REDIS_URL_FILE` <sup>\*</sup> | Redis connection string | Not Set |
 | `REDIS_HOST` | Redis instance host/ip | Not Set |
 | `REDIS_PORT` | Redis instance port | `6379` |
 | `REDIS_USERNAME`<br/>`REDIS_USERNAME_FILE` | Redis instance username | Not Set |
@@ -46,7 +46,7 @@ Whendarr uses environment variables for complete configuration.
 | `REDIS_TLS_CA`<br/>`REDIS_TLS_CA_FILE` | TLS trusted CA certificate | Not Set |
 | `REDIS_TLS_CERT`<br/>`REDIS_TLS_CERT_FILE` | TLS certificate file | Not Set |
 | `REDIS_TLS_KEY`<br/>`REDIS_TLS_KEY_FILE` | TLS certificate key | Not Set |
-| `REDIS_TLS_REJECT_UNAUTHORIZED` | Redis key prefix for namespacing | `true` |
+| `REDIS_TLS_REJECT_UNAUTHORIZED` | Certificate verified against list of supplied CAs | `true` |
 
-\* `REDIS_URL` takes priority over `REDIS_HOST`, `REDIS_PORT`, `REDIS_USERNAME`, and `REDIS_PASSWORD`
+ <sup>\*</sup> `REDIS_URL` takes priority over `REDIS_HOST`, `REDIS_PORT`, `REDIS_USERNAME`, and `REDIS_PASSWORD`
 
