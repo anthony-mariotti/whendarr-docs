@@ -1,15 +1,28 @@
 ---
-title: Docker Compose
+title: Docker
 description:
 ---
 
 import { WorkInProgress } from '@/components/callouts.js';
 
-# Docker Compose
+# Docker
 
 <WorkInProgress />
 
-## docker-compose.yml
+## Command Line
+
+```bash
+docker run --name whendarr \
+    -e RADARR_URL=value \
+    -e RADARR_KEY=value \
+    -e SONARR_URL=value \
+    -e SONARR_KEY=value \
+    -p 3000:3000 \
+    ghcr.io/anthony-mariotti/whendarr:latest
+```
+
+
+## Compose File
 
 ```yml
 services:

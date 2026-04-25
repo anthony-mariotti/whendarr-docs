@@ -7,3 +7,20 @@ import { WorkInProgress } from '@/components/callouts.js';
 # Installation
 
 <WorkInProgress />
+
+## Requirements
+
+- Docker
+- API acccess to \*arr stack
+    - Radarr
+    - Sonarr
+- [Redis](https://redis.io/) or [Valkey](https://valkey.io/)
+
+## Choose Installation Method
+
+| Method | Use Case |
+| ------ | -------- |
+| [Docker](/guide/install/docker) | Command/Compose for terminal and servers |
+| [Docker Managed](/guide/install/managed) | Portainer, Komodo, or other similar Docker management tools |
+| [Kubernetes](/guide/install/kubernetes) | \[**[Planned](/roadmap)**\] Helm-based deployments |
+| [Supervised](/guide/install/supervised) | \[**[Planned](/roadmap)**\] Unraid or other bare-metal hosting |
