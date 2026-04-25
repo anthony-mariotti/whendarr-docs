@@ -4,18 +4,61 @@ description:
 ---
 
 import { WorkInProgress } from '@/components/callouts.js';
+import { Callout } from 'nextra/components';
 
 # Getting Started
 
 <WorkInProgress />
 
+Whendarr is created in a way to be simple to use, but it's also important to be
+transparent about how it works under the hood. This page documents the data flow and
+API calls that make the calendar work. This helps you know exactly what Whendarr is
+doing on your behalf, what services it talks to, and when.
+
+Because Whendarr sits between your browser and your private \*arr stack, understanding
+its behavior helps you, the server owner, make informed descisions about how you deploy
+it. This is not a black box. Your media data stays on your infrastructure, Sonarr and
+Radarr, never exposed to the wild open internet.
+
+<Callout type={'important'}>
+    Whendarr only ever reads, never writing back any data to your \*arr stack.
+</Callout>
+
+## Calendar Sequence
+
 ```mermaid
-graph LR;
-A[Users];
-B[Whendarr];
-C[Sonarr];
-D[Radarr];
-A --> B;
-B --> C;
-B --> D;
+sequenceDiagram
+    participant User
+    participant Whendarr
+    participant Cache as Cache<br/>(Redis/Valkey)
+    participant Integrations as *arr Integrations<br/>(Sonarr, Radarr, ...)
+
+    User->>Whendarr: Request Calendar
+    Whendarr->>Cache: Check Cache
+    alt Cache Miss
+        Whendarr->>Integrations: Fetch Calendar
+        Integrations-->>Whendarr: Return Calendar Data
+        Whendarr->>Cache: Cache Mapped Calendar
+    end
+    Whendarr-->>User: Render Calendar
 ```
+
+## Downstream API Endpoints
+
+### Sonarr
+
+View [Sonarr API](https://sonarr.tv/docs/api/#v3) Documentation
+
+| Endpoint           | Purpose       | Parameters                      |
+| ------------------ | ------------- | ------------------------------- |
+| `/api/v3/health`   | Healthcheck   | None                            |
+| `/api/v3/calendar` | Calendar Data | `start`, `end`, `includeSeries` |
+
+### Radarr
+
+View [Radarr API](https://radarr.video/docs/api/) Documentation
+
+| Endpoint           | Purpose       | Parameters     |
+| ------------------ | ------------- | -------------- |
+| `/api/v3/health`   | Healthcheck   | None           |
+| `/api/v3/calendar` | Calendar Data | `start`, `end` |
