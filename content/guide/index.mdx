@@ -62,3 +62,19 @@ View [Radarr API](https://radarr.video/docs/api/) Documentation
 | ------------------ | ------------- | -------------- |
 | `/api/v3/health`   | Healthcheck   | None           |
 | `/api/v3/calendar` | Calendar Data | `start`, `end` |
+
+## Client-Side Caching
+
+Whendarr uses [TanStack Query](https://tanstack.com/query/latest) (`@tanstack/react-query`) to manage client-side
+data fetching and caching in the browser. Adding a second layer of caching in on top of server-side Redis/Valkey
+caching. This means repeated navigation between already fetched months *should* feel near-instant without fetching
+on each month navigation.
+
+When you load the calendar, TanStack Query stores the response (in memory) for the duration of a session.  If you navigate
+away and return, or switch between months you've already viewed, the data is served directly from the client cache. In the
+background, TanStack Query will silently revalidate stale data and update the view if anything has changed.
+
+This two-layer caching strategy means:
+
+- Redis/Valkey protects your \*arr services from repeated server-side API calls across all users and sessions.
+- TanStack Query protects the server from repeated browser requests within a single user's session.
